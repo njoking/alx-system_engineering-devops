@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ap1 | sort -t/ -k1,1 -k2 | tr '\n' ','
+ls -ap1 | sort -t/ -k1, 1 -k2 | tr '\n' ','
