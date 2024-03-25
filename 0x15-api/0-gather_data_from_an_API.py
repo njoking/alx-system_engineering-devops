@@ -8,11 +8,11 @@ import sys
 base_url = 'https://jsonplaceholder.typicode.com'
 
 if __name__ == "__main__":
-
-    user_id = sys.argv[1]
+    
+    employee_id = sys.argv[1]
 
     # get user info e.g https://jsonplaceholder.typicode.com/users/1/
-    user_url = '{}/users?id={}'.format(base_url, user_id)
+    user_url = '{}/users?id={}'.format(base_url, employee_id)
     # print("user url is: {}".format(user_url))
 
     # get info from api
@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     # get user info about todo tasks
     # e.g https://jsonplaceholder.typicode.com/users/1/todos
-    tasks_url = '{}/todos?userId={}'.format(base_url, user_id)
+    tasks_url = '{}/todos?userId={}'.format(base_url, employee_id)
     # print("tasks url is: {}".format(tasks_url))
 
     # get info from api
