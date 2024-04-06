@@ -5,7 +5,7 @@
 # facebook.com resolves to 8.8.8.8.
 
 
-cp /etc/hosts ~/hosts.edit
+cp / etc/hosts ~/hosts.edit
 echo "127.0.0.2		localhost" > ~/hosts.edit
 echo "8.8.8.8		facebook.com" >> ~/hosts.edit
-cp -f ~/hosts.edit /etc/hosts
+cp - f ~/hosts.edit / etc/hosts
