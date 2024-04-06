@@ -2,4 +2,4 @@
 # a Bash script that displays all active IPv4 IPs
 # on the machine it’s executed on.
 # uses awk
-ifconfig | awk -F "[: ]+" '/inet addr:/ { print $4 }'
+ifconfig | awk - F "[: ]+" '/inet addr:/ { print $4 }'
