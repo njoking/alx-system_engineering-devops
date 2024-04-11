@@ -1,23 +1,40 @@
 #!/usr/bin/python3
-""" Exporting csv files"""
-import json
+"""Module that consumes the Reddit API and prints the titles of the first
+10 hot posts listed for a given subreddit."""
 import requests
-import sys
 
 
 def top_ten(subreddit):
-    """Read reddit API and return top 10 hotspots """
-    username = 'ledbag123'
-    password = 'Reddit72'
-    user_pass_dict = {'user': username, 'passwd': password, 'api_type': 'json'}
-    headers = {'user-agent': '/u/ledbag123 API Python for Holberton School'}
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    client = requests.session()
-    client.headers = headers
-    r = client.get(url, allow_redirects=False)
-    if r.status_code == 200:
-        list_titles = r.json()['data']['children']
-        for a in list_titles[:10]:
-            print(a['data']['title'])
+    """Queries the Reddit API and prints the titles of the first 10 hot
+    posts listed for a given subreddit.
+
+    If not a valid subreddit, print None.
+    Invalid subreddits may return a redirect to search results. Ensure
+    that you are not following redirects.
+
+    Args:
+        subreddit (str): subreddit
+
+    Returns:
+        str: titles of the first 10 hot posts
+    """
+    base_url = 'https://www.reddit.com'
+    sort = 'top'
+    limit = 10
+    url = '{}/r/{}/.json?sort={}&limit={}'.format(
+        base_url, subreddit, sort, limit)
+    headers = {
+        'User-Agent':
+        'Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.3) \
+        Gecko/20100401 Firefox/3.6.3 (FM Scene 4.6.1)'
+    }
+    response = requests.get(
+        url,
+        headers=headers,
+        allow_redirects=False
+    )
+    if response.status_code == 200:
+        for post in response.json()['data']['children'][0:10]:
+            print(post['data']['title'])
     else:
-        return(print("None"))
+        print(None)
