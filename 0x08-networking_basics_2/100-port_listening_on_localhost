@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# a Bash script that listens on
+# port 98 on localhost
+# can use this script across networks as well
+
+nc -l localhost 98
