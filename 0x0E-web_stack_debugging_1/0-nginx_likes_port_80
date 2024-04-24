@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Fixes Ngnix server
-new_string="listen 80 default_server;"
-old_string="listen 8080 default_server;"
-sudo sed -i "s/$old_string/$new_string/" /etc/nginx/sites-enabled/default
-sudo sed -i '22d' /etc/nginx/sites-enabled/default
-sudo service nginx start
+# find out what’s keeping your Ubuntu container’s
+# Nginx installation from listening on port 80.
+# Feel free to install whatever tool you need, start and destroy
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
